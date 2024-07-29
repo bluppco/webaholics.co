@@ -1,0 +1,112 @@
+---
+
+// IMPORT ASTRO LAYOUTS
+import ContainerSmall from "@/layouts/container-small/index.astro"
+
+// IMPORT ASTRO ATOMS
+import ButtonPurple from "@/atoms/atoms-shiva/buttons/purple/index.astro"
+import HeadingThreeFourXlSemiBold from "@/atoms/atoms-shiva/headings/three/four-xl/semibold/index.astro"
+import HeadingTwoFiveXlBoldCenter from "@/atoms/atoms-shiva/headings/two/five-xl/bold/center/index.astro"
+import Link from "@/atoms/links/index.astro"
+import ParagraphTwoXlBoldCenterBlue from "@/atoms/atoms-shiva/paragraphs/two-xl/bold/center/blue/index.astro"
+import ParagraphTwoXlBoldCenterGreen from "@/atoms/atoms-shiva/paragraphs/two-xl/bold/center/green/index.astro"
+import ParagraphTwoXlBoldCenterPurple from "@/atoms/atoms-shiva/paragraphs/two-xl/bold/center/purple/index.astro"
+import ParagraphTwoXlCenter from "@/atoms/atoms-shiva/paragraphs/two-xl/center/index.astro"
+import ParagraphXlCenter from "@/atoms/atoms-shiva/paragraphs/xl/center/index.astro"
+
+// HARDCODED DATA
+const title_data = {
+
+    blue: "ROI",
+    green: "90 Days",
+    purple: "ROI Assurance",
+
+}
+const data = {
+    
+    button_link: "/",
+    button_text: "LEARN MORE",
+    choose_us_data: [
+
+        {   
+            color: "blue",
+            description: "Our clients typically see results within the first 90 days.",
+            title:"Rapid Results:",
+        },
+        {   
+            color: "green",
+            description: " Achieve 2x, 4x, 8x measurable ROI.",
+            title:"Maximize Your ROI:",
+        },
+        {   
+            color: "purple",
+            description: " Consistently rated 5 Stars, trusted track record.",
+            title:"Proven Success:",
+        },
+
+    ],
+    second_title: "Why Choose Us?",
+    subtitle: "Pay only for results with performance-based marketing",
+
+}
+// FUNCTION TO CHANGE THE TITLE COLORS
+const getParagraphComponent = ( color ) => {
+
+    switch ( color ) {
+
+        case "blue":
+            return ParagraphTwoXlBoldCenterBlue
+        case "green":
+            return ParagraphTwoXlBoldCenterGreen
+        case "purple":
+            return ParagraphTwoXlBoldCenterPurple
+        default:
+            return ParagraphXlCenter
+
+    }
+
+}
+
+---
+
+<section class="py-14">
+    <ContainerSmall>
+        <div class="flex flex-col gap-12 items-center">
+            <div class="flex flex-col gap-6 items-center lg:px-56">
+                <HeadingTwoFiveXlBoldCenter>
+                    Guaranteed
+                    <span class="text-blue-500">{ title_data.blue }</span>
+                    in
+                    <span class="text-green-500">{ title_data.green }</span>
+                    with
+                    <span class="text-purple-500">{ title_data.purple }</span>
+                </HeadingTwoFiveXlBoldCenter>
+                <ParagraphTwoXlCenter>{ data.subtitle }</ParagraphTwoXlCenter>
+            </div>
+            <div class="flex flex-col gap-4 items-center">
+                <HeadingThreeFourXlSemiBold>{ data.second_title }</HeadingThreeFourXlSemiBold>
+                {
+                
+                    data.choose_us_data.map( ( item ) => {
+
+                        const ParagraphComponent = getParagraphComponent(item.color)
+
+                        return (
+
+                            <div class="flex items-center gap-2">
+                                <ParagraphComponent>{item.title}</ParagraphComponent>
+                                <ParagraphXlCenter>{item.description}</ParagraphXlCenter>
+                            </div>
+
+                        )
+                        
+                    })
+                
+                }
+                <Link href={ data.button_link }>
+                    <ButtonPurple>{ data.button_text }</ButtonPurple>
+                </Link>
+            </div>
+        </div>  
+    </ContainerSmall>
+</section>
