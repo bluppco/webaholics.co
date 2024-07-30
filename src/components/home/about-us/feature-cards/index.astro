@@ -1,0 +1,35 @@
+---
+
+//IMPORT ASTRO ATOMS
+import HeadingSixThreeXlMediumWhite from "@/atoms/atoms-diksha/headings/six/3xl/medium/white/index.astro"
+import Link from "@/atoms/links/index.astro"
+import ParagraphLightWhite from "@/atoms/atoms-diksha/paragraphs/light/white/index.astro"
+import ParagraphSmMediumUppercaseWhite from "@/atoms/atoms-diksha/paragraphs/sm/medium/uppercase/white/index.astro"
+
+//GET ASTRO PROPS
+const { 
+    
+    description,
+    image,
+    link,
+    title
+
+} = Astro.props
+---
+
+<Link
+    aria_label={ title }
+    href={ link }
+>
+    <div
+        style={`background-image: url(${ image })`}
+        class="bg-cover bg-center bg-no-repeat aspect-square w-full h-[400px] rounded-xl p-12 flex flex-col justify-between"
+    >
+        <div class="space-y-4">
+            <HeadingSixThreeXlMediumWhite>{ title }</HeadingSixThreeXlMediumWhite>
+            <ParagraphLightWhite>{ description }</ParagraphLightWhite>
+        </div>
+        <ParagraphSmMediumUppercaseWhite>Learn more</ParagraphSmMediumUppercaseWhite>
+    </div>
+</Link>
+<!-- add card animations  -->
