@@ -9,7 +9,7 @@ import Footer from "@/components/common/footer/index.astro"
 import Header from "@/components/common/header/index.astro"
 import HeaderBanner from "@/components/common/header-banner/index.astro"
 import Hero from "@/components/home/hero/index.astro"
-import LeadGenerationAndEcommerce from "@/components/home/lead-generation-and-ecommerce/index.astro"
+import LeadGenerationAndEcommerce from "@/components/home/lead-generation-and-ecommerce/jsx/index"
 import OnlineMarketingExperts from "@/components/home/online-marketing-experts/index.astro"
 import Our3StepPlan from "@/components/home/our-3-step-plan/index.astro"
 import OurWork from "@/components/home/our-work/index.astro"
@@ -28,7 +28,7 @@ import WhyChooseUs from "@/components/home/why-choose-us/index.astro"
 <Our3StepPlan />
 <OnlineMarketingExperts />
 <TransformYourBusiness />
-<LeadGenerationAndEcommerce />
+<LeadGenerationAndEcommerce client:load />
 <OurWork />
 <TurnLeadsIntoClients />
 <AboutUs />
