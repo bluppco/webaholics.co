@@ -46,8 +46,12 @@ module.exports = {
 
 			},
 			colors: {
-
-
+				color:{
+					purple:"#ba1ad5",
+					blue:"#2891d5",
+					light_green:"#8bc53f",
+					dark_gray:"#444444"
+				}
 			},
 			fontFamily: {
 
