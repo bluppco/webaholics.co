@@ -1,0 +1,64 @@
+---
+
+//IMPORT ASTRO LAYOUTS
+import Container from "@/layouts/container/index.astro";
+
+//IMPORT ASTRO COMPONENTS
+import Step from "@/components/home/our-3-step-plan/steps/index.astro"
+
+//IMPORT ASTRO ATOMS
+import ButtonPurple from "@/atoms/atoms-diksha/buttons/purple/index.astro"
+import HeadingTwoSixXlBold from "@/atoms/atoms-diksha/headings/two/6xl/bold/index.astro"
+import Link from "@/atoms/links/index.astro"
+
+//CONSTANTS
+const steps =[
+    {
+        step_color: "blue",
+        step_description: "Get to know you and your business.",
+        step_number: 1,
+    },
+    {
+        step_color: "dark_gray",
+        step_description: "After thoroughly understanding your business, we will design a customized strategy to generate more profitable sales.",
+        step_number: 2,
+    },
+    {
+        step_color: "light_green",
+        step_description: "Transition to a performance-based strategy, maximizing ROI and Aligning Our Success with Yours.",
+        step_number: 3,
+    }
+]
+
+---
+
+<div class="bg-color-light_blue">
+    <Container>
+        <div class="flex flex-col gap-10 items-center">
+            <HeadingTwoSixXlBold>Our 3 Step Plan</HeadingTwoSixXlBold>
+            {
+
+                steps.map( ( step ) => {
+
+                    return (
+
+                        <Step 
+                            step_color={ step.step_color }
+                            step_description={ step.step_description }
+                            step_number={ step.step_number }
+                        />
+
+                    )
+
+                })
+
+            }
+            <Link
+                aria_label="start risk free today"
+                href="/"
+            >
+                <ButtonPurple>Start Risk Free Today</ButtonPurple>
+            </Link>
+        </div>
+    </Container>
+</div>

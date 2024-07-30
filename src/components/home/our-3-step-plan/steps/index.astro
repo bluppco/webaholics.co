@@ -1,0 +1,37 @@
+---
+
+//IMPORT ASTRO ATOMS
+import HeadingTwoSixXlWhite from "@/atoms/atoms-diksha/headings/two/6xl/white/index.astro"
+import HeadingSixThreeXlGray from "@/atoms/atoms-diksha/headings/six/3xl/gray/index.astro"
+
+//GET ASTRO PROPS
+const {
+
+    step_color,
+    step_description,
+    step_number,
+
+}= Astro.props
+
+//CONSTANTS
+const stepColorClasses = {
+  blue: 'bg-color-blue',
+  light_green: 'bg-color-light_green',
+  dark_gray: 'bg-color-dark_gray',
+}
+
+const stepClass = stepColorClasses[step_color]
+
+---
+
+<div class="p-4 rounded-lg flex flex-col lg:flex-row gap-8 justify-between items-stretch lg:items-center bg-white w-full transition hover:ease-in-out duration-300 hover:shadow-[0_4px_6px_2px] hover:shadow-black/[0.1]">
+    <div class={`${stepClass} rounded-r-full px-3 py-4 lg:pl-6 lg:pr-20 lg:py-8`}>
+        <HeadingTwoSixXlWhite>
+            Step 
+            { step_number }
+        </HeadingTwoSixXlWhite>
+    </div>
+    <div class="w-full lg:w-3/4">
+        <HeadingSixThreeXlGray>{ step_description }</HeadingSixThreeXlGray>
+    </div>
+</div>
