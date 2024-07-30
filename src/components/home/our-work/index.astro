@@ -1,0 +1,146 @@
+---
+
+// IMPORT ASTRO LAYOUTS
+import ContainerSmall from "@/layouts/container-small/index.astro"
+
+// IMPORT ASTRO COMPONENTS
+import OurWorkCard from "@/components/home/our-work/card/index.astro"
+
+// IMPORT ASTRO ATOMS
+import HeadingTwoFourXl from "@/atoms/atoms-shiva/headings/two/4xl/light/index.astro"
+import Link from "@/atoms/links/index.astro"
+import ParagraphSmBlue from "@/atoms/atoms-shiva/paragraphs/sm/semibold/blue/index.astro"
+import ParagraphXlLeading from "@/atoms/atoms-shiva/paragraphs/xl/leading/index.astro"
+import PictureContain from "@/atoms/picture/internal/contain/index.astro"
+
+// HARDCODE DATA
+const data = {
+
+    bold_title: "Speaks for Itself",
+    description: "Webaholics provides clients with real-time lead notifications and tracking through advanced reporting. Stay informed and seize new opportunities with our reliable communication and comprehensive tracking capabilities.",
+    link_text: "VIEW OUR PORTFOLIO",
+    link: "/",
+    title: "Our Work ",
+
+}
+const card_data = [
+
+    {
+        alternative_text: "Salt Lake",
+        bg_color: "bg-sky-600",
+        description: "Salt Lake Description",
+        link: "/",
+        source: "/images/salt-lake.png",
+        span: "col-span-2 row-span-2",
+        title: "Salt Lake",
+    },
+    {
+        alternative_text: "Strata Networks",
+        bg_color: "bg-rose-600",
+        description: "Internet at the speed of light",
+        link: "/",
+        source: "/images/strata-networks.png",
+        title: "Strata Networks",
+    },
+    {
+        alternative_text: "Muscle MX",
+        bg_color: "bg-black",
+        description: "High quality CBD",
+        link: "/",
+        source: "/images/muscle-mx.jpg",
+        title: "Muscle MX",
+    },
+    {
+        alternative_text: "Courtpath",
+        bg_color: "bg-yellow-600",
+        description: "Your premier Court E-Filing Provider",
+        link: "/",
+        source: "/images/courtpath.jpg",
+        title: "Courtpath",
+    },
+    {
+        alternative_text: "Mountain West",
+        bg_color: "bg-sky-400",
+        description: "Full Service Commercial Real Estate Since 2009",
+        link: "/",
+        source: "/images/mountain-west.jpg",
+        title: "Mountain West Commercial Real Estate ",
+    },
+    {
+        alternative_text: "Cr england",
+        bg_color: "bg-rose-600",
+        description: "Delivering Excellence in Transportation Since 1920.",
+        link: "/",
+        source: "/images/cr-england.jpg",
+        title: "C.R. England",
+    },
+    {
+        alternative_text: "Maverick Trading",
+        bg_color: "bg-orange-300",
+        description: "Helping traders achieve the highest levels of success",
+        link: "/",
+        source: "/images/maverick-trading.jpg",
+        title: "Maverick Trading",
+    },
+    {
+        alternative_text: "Motion State",
+        bg_color: "bg-black",
+        description: "Award winning production company specializing in stabilized camera cinematography",
+        link: "/",
+        source: "/images/motion-state.jpg",
+        title: "Motion State",
+    },
+    {
+        alternative_text: "EFMCO",
+        bg_color: "bg-yellow-300",
+        description: "One-stop shop for all of your beverage parts and equipment needs.",
+        link: "/",
+        source: "/images/efmco.jpg",
+        title: "EFMCO",
+    },
+
+]
+
+---
+
+<section class="py-14 bg-blue-100">
+    <ContainerSmall>
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+            <div class="hidden lg:grid grid-cols-4 col-span-3 gap-4">
+                {
+
+                    card_data.map( ( data ) => (
+
+                        <div class={`${ data.span || "" }`}>
+                            <OurWorkCard
+                                alternative_text={ data.alternative_text }
+                                bg_color={ data.bg_color }
+                                description={ data.description }
+                                link={ data.link }
+                                source={ data.source }
+                                title={ data.title }
+                            />
+                        </div>
+
+                    ))
+
+                }
+            </div>
+            <div class="flex justify-center flex-col gap-4">
+                <HeadingTwoFourXl>{ data.title }<span class="font-semibold">{ data.bold_title }</span></HeadingTwoFourXl>
+                <ParagraphXlLeading>{ data.description }</ParagraphXlLeading>
+                <Link href={ data.link }>
+                    <div class="flex items-center gap-2 group">
+                        <ParagraphSmBlue>{ data.link_text }</ParagraphSmBlue>
+                        <div class="flex items-center justify-center size-6 p-2 rounded-full overflow-hidden bg-blue-400 group-hover:bg-green-400 duration-200">
+                            <PictureContain
+                                alternative_text=""
+                                source="/icons/right-arrow.svg"
+                            />
+                        </div>
+                    </div>
+                </Link>
+            </div>
+        </div>
+    </ContainerSmall>
+</section>
