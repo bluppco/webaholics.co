@@ -109,20 +109,26 @@ const card_data = [
             <div class="hidden lg:grid grid-cols-4 col-span-3 gap-4">
                 {
 
-                    card_data.map( ( data ) => (
+                    card_data.map( ( data, index ) => {
 
-                        <div class={`${ data.span || "" }`}>
-                            <OurWorkCard
-                                alternative_text={ data.alternative_text }
-                                bg_color={ data.bg_color }
-                                description={ data.description }
-                                link={ data.link }
-                                source={ data.source }
-                                title={ data.title }
-                            />
-                        </div>
+                        const spanClass = index === 0 ? "col-span-2 row-span-2" : ""
 
-                    ))
+                        return (
+
+                            <div class={`${ spanClass }`}>
+                                <OurWorkCard
+                                    alternative_text={ data.alternative_text }
+                                    bg_color={ data.bg_color }
+                                    description={ data.description }
+                                    link={ data.link }
+                                    source={ data.source }
+                                    title={ data.title }
+                                />
+                            </div>
+
+                        )
+
+                    })
 
                 }
             </div>

@@ -21,12 +21,10 @@ const images = [
     {
         alternative_text: "",
         source: "/images/hero-1.png",
-        z_index: "z-10",
     },
     {
         alternative_text: "",
         source: "/images/hero-2.png",
-        z_index: "z-20",
     },
     {
         alternative_text: "",
@@ -59,16 +57,21 @@ const images = [
         <div class="relative w-full aspect-video">
             {
 
-                images.map( ( image ) => (
+                images.map( ( image, index ) => {
 
-                    <div class={`absolute w-full aspect-video ${ image.z_index || "" }`}>
-                        <PictureContain
-                            alternative_text={ image.alternative_text }
-                            source={ image.source }
-                        />
-                    </div>
+                    const zIndexClass = index === 0 ? "z-10" : index === 1 ? "z-20" : ""
 
-                ))
+                    return (
+
+                        <div class={`absolute w-full aspect-video ${ zIndexClass }`}>
+                            <PictureContain
+                                alternative_text={ image.alternative_text }
+                                source={ image.source }
+                            />
+                        </div>
+
+                    )
+                })
 
             }
         </div>
