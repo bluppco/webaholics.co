@@ -1,0 +1,36 @@
+---
+
+// IMPORT ASTRO ATOMS
+import Link from "@/atoms/links/index.astro"
+import ParagraphLgWhite from "@/atoms/atoms-shiva/paragraphs/lg/white/index.astro"
+import ParagraphTwoXlBoldWhite from "@/atoms/atoms-shiva/paragraphs/two-xl/bold/white/index.astro"
+import PictureContain from "@/atoms/picture/internal/contain/index.astro"
+
+// GET ASTRO PROPS
+const {
+
+    alternative_text,
+    bg_color,
+    description,
+    link,
+    source,
+    title,
+
+} = Astro.props
+
+---
+
+<Link href={ link }>
+    <div class="relative group aspect-square rounded-lg overflow-hidden">
+        <div class="w-full aspect-square transform group-hover:-translate-y-4 transition-transform duration-300 ease-in-out">
+            <PictureContain
+                alternative_text={ alternative_text }
+                source={ source }
+            />
+        </div>
+        <div class={`absolute bottom-0 rounded-b-lg w-full p-4 ${ bg_color } max-h-0 opacity-0 group-hover:max-h-full group-hover:opacity-100 overflow-hidden transition-all duration-200 ease-in-out`}>
+            <ParagraphTwoXlBoldWhite>{ title }</ParagraphTwoXlBoldWhite>
+            <ParagraphLgWhite>{ description }</ParagraphLgWhite>
+        </div>
+    </div>
+</Link>

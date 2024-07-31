@@ -1,0 +1,79 @@
+---
+
+// IMPORT ASTRO ATOMS
+import ButtonPurpleLarge from "@/atoms/atoms-shiva/buttons/purple/large/index.astro"
+import HeadingOneCenterWhite from "@/atoms/atoms-shiva/headings/one/6xl/bold/center/white/index.astro"
+import HeadingTwoXlCenterWhite from "@/atoms/atoms-shiva/headings/two/xl/center/white/index.astro"
+import Link from "@/atoms/links/index.astro"
+import PictureContain from "@/atoms/picture/internal/contain/index.astro"
+
+// HARDCODED DATA
+const data = {
+
+    button_link: "/",
+    button_text: "GET STARTED",
+    subtitle: "Performance Based Digital Marketing",
+    title: "Aligning Our Success With Yours",
+
+}
+const images = [
+
+    {
+        alternative_text: "",
+        source: "/images/hero-1.png",
+    },
+    {
+        alternative_text: "",
+        source: "/images/hero-2.png",
+    },
+    {
+        alternative_text: "",
+        source: "/images/hero-3.png",
+    },
+    {
+        alternative_text: "",
+        source: "/images/hero-4.png",
+    },
+
+]
+
+---
+
+<section class="relative overflow-hidden flex items-center justify-center py-16">
+    <div class="absolute inset-0 w-full h-full bg-gray-400 bg-opacity-50">
+        <video class="absolute top-0 left-0 w-full h-full -z-20 object-cover pointer-events-none" autoplay loop muted playsinline>
+            <source src="/videos/videoplayback.webm" type="video/webm">
+        </video>
+    </div>
+    <div class="bg-gray-100 absolute bottom-0 h-96 w-full"></div>
+    <div class="flex flex-col items-center gap-10 justify-center px-4 pt-32">
+        <div class="flex flex-col items-center gap-4 z-10">
+            <HeadingTwoXlCenterWhite>{ data.subtitle }</HeadingTwoXlCenterWhite>
+            <HeadingOneCenterWhite>{ data.title }</HeadingOneCenterWhite>
+            <Link href={ data.button_link }>
+                <ButtonPurpleLarge>{ data.button_text }</ButtonPurpleLarge>
+            </Link>
+        </div>
+        <div class="relative w-full aspect-video">
+            {
+
+                images.map( ( image, index ) => {
+
+                    const zIndexClass = index === 0 ? "z-10" : index === 1 ? "z-20" : ""
+
+                    return (
+
+                        <div class={`absolute w-full aspect-video ${ zIndexClass }`}>
+                            <PictureContain
+                                alternative_text={ image.alternative_text }
+                                source={ image.source }
+                            />
+                        </div>
+
+                    )
+                })
+
+            }
+        </div>
+    </div>
+</section>
