@@ -4,6 +4,7 @@
 const {
 
     alternative_text,
+    id,
     source
 
 } = Astro.props
@@ -15,6 +16,7 @@ const {
     <img
         alt={ alternative_text }
         class="w-full h-full object-contain"
+        id={ id }
         src={ source }
     />
 </picture>
