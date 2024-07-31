@@ -1,0 +1,101 @@
+---
+
+//IMPORT ASTRO LAYOUTS
+import Container from "@/layouts/container/index.astro";
+
+//IMPORT ASTRO COMPONENTS
+import FeatureCard from "@/components/home/about-us/feature-cards/index.astro"
+
+//IMPORT ASTRO ATOMS
+import ButtonPurple from "@/atoms/atoms-diksha/buttons/purple/index.astro"
+import HeadingThreeFiveXlBlackBlue from "@/atoms/atoms-diksha/headings/three/5xl/black/blue/index.astro"
+import HeadingFourFourXlLightBlue from "@/atoms/atoms-diksha/headings/four/4xl/light/blue/index.astro"
+import Link from "@/atoms/links/index.astro"
+import ParagraphSlate from "@/atoms/atoms-diksha/paragraphs/slate/index.astro"
+import Picture from "@/atoms/picture/internal/contain/index.astro"
+
+//CONSTANTS
+const content = {
+    title: "At Webaholics,",
+    subtitle:"Our Addiction Is Your Success.",
+    description:"What’s unique about Webaholics? We help our clients build websites and apps that are easy to maintain and edit, so you don’t need to make a support call for simple changes. If you’re in need of any online help, we’re the team for you!",
+    button_text:"contact us today",
+    button_link:"/"
+}
+
+const about_us = [
+    {
+        title:"Performance-based Marketing",
+        description:"Learn about our service that helps increase your revenue on the web.",
+        link:"/",
+        image:"/images/webaholics-home-services.jpg"
+    },
+    {
+        title:"Our Team",
+        description:"Check out the great people that make this company tick.",
+        link:"/",
+        image:"/images/our-team.jpg"
+    },
+    {
+        title:"Blog",
+        description:"Read the latest news and stories from the Webaholics team!",
+        link:"/",
+        image:"/images/webaholics-home-blog-image.jpg"
+    }
+]
+
+---
+
+
+<div class="bg-[url('/images/webaholics-home-mountain-background.jpg')] bg-cover bg-center bg-no-repeat bg-local py-24 lg:py-32">
+    <Container>
+        <div class="flex flex-col gap-10 justify-between lg:flex-row items-center">
+            <div class="w-full lg:w-1/2">
+                <div class="w-[480px] aspect-square">
+                    <Picture
+                        alternative_text="mountain"
+                        source="/images/about-us-computers.svg"
+                    />
+                </div>
+            </div>
+            <div class="w-full lg:w-1/2 flex flex-col gap-12">
+                <div class="space-y-4">
+                    <HeadingThreeFiveXlBlackBlue>{ content.title }</HeadingThreeFiveXlBlackBlue>
+                    <HeadingFourFourXlLightBlue>{ content.subtitle }</HeadingFourFourXlLightBlue>
+                </div>
+                <ParagraphSlate>{ content.description }</ParagraphSlate>
+                <Link
+                    aria_label="contact us today"
+                    href={ content.button_link }
+                >
+                    <ButtonPurple>{ content.button_text }</ButtonPurple>
+                </Link>
+            </div>
+        </div>
+    </Container>
+</div>
+<div class="mt-[-160px] py-16">
+    <Container>
+        <div class="flex flex-col lg:flex-row gap-4 justify-center">
+            {
+
+                about_us.map( ( about ) => {  
+
+                    return (
+
+                        <FeatureCard 
+                            description={ about.description }
+                            image={ about.image }
+                            link={ about.link }
+                            title={ about.title }
+                        />
+                    
+                    )
+
+                })
+
+            }
+        </div>
+    </Container>
+</div>
+  
