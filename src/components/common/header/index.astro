@@ -1,13 +1,48 @@
 ---
 
 // IMPORT ASTRO LAYOUTS
-import Container from "@/layouts/container/index.astro"
+import ContainerSmall from "@/layouts/container-small/index.astro"
+
+// IMPORT ASTRO ATOMS
+import Link from "@/atoms/links/index.astro"
+import PictureContain from "@/atoms/picture/internal/contain/index.astro"
 
 ---
-<header class="bg-blue-400 h-12">
-    <Container>
-        <section class="flex items-center h-full">
-            <p class="text-white">I am header</p>
-        </section>
-    </Container>
+
+<header class="z-20 fixed w-full py-4" id="header">
+    <ContainerSmall>
+        <nav class="">
+            <Link href="/">
+                <div class="h-14 aspect-[10/2]">
+                    <PictureContain
+                        alternative_text=""
+                        id="logo"
+                        source="/logos/webaholic.png"
+                    />
+                </div>
+            </Link>
+        </nav>
+    </ContainerSmall>
 </header>
+
+<script>
+    // SCRIP TO CHANGE THE BG AND LOGO SOURCE IN HEADER
+    document.addEventListener("scroll", () => {
+
+        const header = document.getElementById("header")
+        const logoImage = document.getElementById("logo")
+        if ( window.scrollY > 0 ) {
+
+            header.classList.add("bg-white", "shadow-md")
+            logoImage.src = "/logos/webaholic-blue.png"
+
+        } 
+        else {
+
+            header.classList.remove("bg-white", "shadow-md")
+            logoImage.src = "/logos/webaholic.png"
+
+        }
+
+    })
+</script>
