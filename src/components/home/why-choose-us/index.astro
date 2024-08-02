@@ -5,13 +5,13 @@ import ContainerSmall from "@/layouts/container-small/index.astro"
 
 // IMPORT ASTRO ATOMS
 import ButtonPurple from "@/atoms/atoms-shiva/buttons/purple/index.astro"
-import HeadingThreeFourXlSemiBold from "@/atoms/atoms-shiva/headings/three/four-xl/semibold/index.astro"
-import HeadingTwoFiveXlBoldCenter from "@/atoms/atoms-shiva/headings/two/five-xl/bold/center/index.astro"
+import HeadingThreeFourXlSemiBold from "@/atoms/atoms-shiva/headings/three/4xl/semibold/index.astro"
+import HeadingTwoFiveXlBoldCenter from "@/atoms/atoms-shiva/headings/two/5xl/bold/center/index.astro"
 import Link from "@/atoms/links/index.astro"
-import ParagraphTwoXlBoldCenterBlue from "@/atoms/atoms-shiva/paragraphs/two-xl/bold/center/blue/index.astro"
-import ParagraphTwoXlBoldCenterGreen from "@/atoms/atoms-shiva/paragraphs/two-xl/bold/center/green/index.astro"
-import ParagraphTwoXlBoldCenterPurple from "@/atoms/atoms-shiva/paragraphs/two-xl/bold/center/purple/index.astro"
-import ParagraphTwoXlCenter from "@/atoms/atoms-shiva/paragraphs/two-xl/center/index.astro"
+import ParagraphTwoXlBoldCenterBlue from "@/atoms/atoms-shiva/paragraphs/2xl/bold/center/blue/index.astro"
+import ParagraphTwoXlBoldCenterGreen from "@/atoms/atoms-shiva/paragraphs/2xl/bold/center/green/index.astro"
+import ParagraphTwoXlBoldCenterPurple from "@/atoms/atoms-shiva/paragraphs/2xl/bold/center/purple/index.astro"
+import ParagraphTwoXlCenter from "@/atoms/atoms-shiva/paragraphs/2xl/center/index.astro"
 import ParagraphXlCenter from "@/atoms/atoms-shiva/paragraphs/xl/center/index.astro"
 
 // HARDCODED DATA
@@ -69,17 +69,17 @@ const getParagraphComponent = ( color ) => {
 
 ---
 
-<section class="py-14">
+<section class="py-14 bg-sky-100">
     <ContainerSmall>
         <div class="flex flex-col gap-12 items-center">
             <div class="flex flex-col gap-6 items-center lg:px-56">
                 <HeadingTwoFiveXlBoldCenter>
                     Guaranteed
-                    <span class="text-blue-500">{ title_data.blue }</span>
+                    <span class="text-blue">{ title_data.blue }</span>
                     in
                     <span class="text-green-500">{ title_data.green }</span>
                     with
-                    <span class="text-purple-500">{ title_data.purple }</span>
+                    <span class="text-purple">{ title_data.purple }</span>
                 </HeadingTwoFiveXlBoldCenter>
                 <ParagraphTwoXlCenter>{ data.subtitle }</ParagraphTwoXlCenter>
             </div>

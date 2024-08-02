@@ -1,0 +1,217 @@
+---
+
+// IMPORT ASTRO COMPONENTS
+import TestimonialCard from "@/components/home/client-testimonials/card/index.astro"
+
+// HARDCODED DATA
+const card_data = [
+
+    {
+        
+        description: "Very responsive and willing to help wherever they can. Their responsiveness to requested changes further emphasizes a client-focused approach.",
+        logo_source: "/logos/strata-networks.png",
+        numbers: [
+
+            {
+                number: "55%",
+                title: "User Engagement",
+            },
+            {
+                number: "31%",
+                title: "Form Submissions",
+            },
+            {
+                number: "53%",
+                title: "Organic Traffic",
+            },
+
+        ],
+
+    },
+    {
+        
+        description: "Great local company, with a passion and energy to help you succeed. They treat you like you’re the only client they have, highly recommend.",
+        logo_source: "/logos/mountain-west.png",
+        numbers: [
+
+            {
+                number: "104%",
+                title: "Organic Traffic",
+            },
+            {
+                number: "84%",
+                title: "Engaged Sessions",
+            },
+            {
+                number: "267%",
+                title: "Agent Phone Calls",
+            },
+
+        ],
+
+    },
+    {
+        
+        description: "They are prompt, always available, and work hard at creating and succeeding in great design, SEO, and strategy which helps your business grow!",
+        logo_source: "/logos/cr-england.png",
+        numbers: [
+
+            {
+                number: "60%",
+                title: "Organic Traffic",
+            },
+            {
+                number: "62%",
+                title: "Engaged Sessions",
+            },
+            {
+                number: "70%",
+                title: "Job Applications",
+            },
+
+        ],
+
+    },
+    {
+        
+        description: "Having Google Ads with them has helped quickly enhance the number of leads our therapy practice gets and has helped us grow very quickly. Well worth the investment.",
+        logo_source: "/logos/empower-you.png",
+        numbers: [
+
+            {
+                number: "150%",
+                title: "Traffic Increase",
+            },
+            {
+                number: "80%",
+                title: "Ad Conversions",
+            },
+            {
+                number: "40%",
+                title: "Consultaions",
+            },
+
+        ],
+
+    },
+    {
+        
+        description: "Webaholics’ work meets the client’s expectations and has led to conversions and growth. They are very personable and easy to work with.",
+        logo_source: "/logos/bfq-law.png",
+        numbers: [
+
+            {
+                number: "30.9k",
+                title: "Paid Clicks",
+            },
+            {
+                number: "25%",
+                title: "Conversion Rate",
+            },
+            {
+                number: "$22.15",
+                title: "Cost/Conversion",
+            },
+
+        ],
+
+    },
+    {
+        
+        description: "The team at Webaholics have been fantastic to work with. I am thrilled with the result and look forward to continuing this great partnership for many years.",
+        logo_source: "/logos/bzer.png",
+        numbers: [
+
+            {
+                number: "100%",
+                title: "Organic Traffic",
+            },
+            {
+                number: "84%",
+                title: "Add to Carts",
+            },
+            {
+                number: "83%",
+                title: "Online Purchases",
+            },
+
+        ],
+
+    },
+
+]
+
+---
+
+<section class="bg-zinc-100 py-12 px-4">
+    <div class="testimonials-swiper overflow-hidden">
+        <div class="swiper-wrapper">
+            {
+
+                card_data.map( ( data ) => (
+
+                    <div class="swiper-slide">
+                        <TestimonialCard
+                            bold_description={ data.bold_description }
+                            description={ data.description }
+                            logo_source={ data.logo_source }
+                            numbers={ data.numbers }
+                        />
+                    </div>
+
+                ))
+
+            }
+        </div>
+    </div>
+</section>
+
+<script>
+    // IMPORT SWIPER AND ITS STYLES
+    import Swiper from 'swiper'
+    import 'swiper/swiper-bundle.css'
+
+    // SWIPER INITIALISE
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const swiper = new Swiper('.testimonials-swiper', {
+
+            // SLIDES TO SHOW ON SCREEN
+            slidesPerView: 1,
+
+            // SLIDES TO SCROLL ON SCREEN
+            slidesPerGroup: 1,
+
+            // SPACE BETWEEN SLIDES
+            spaceBetween: 20,
+
+            // INFINITELY SCROLL SLIDES
+            loop: true,
+            breakpoints: {
+
+                // PARAMETERS FOR SMALL WINDOW SIZE
+                640: {
+
+                    slidesPerView: 2,
+                    slidesPerGroup: 2,
+                    spaceBetween: 20,
+                    loop: true,
+
+                },
+
+                // PARAMETERS FOR LARGE WINDOW SIZE
+                1024: {
+
+                    slidesPerView: 3,
+                    slidesPerGroup: 3,
+                    spaceBetween: 20,
+                    loop: true,
+
+                },
+
+            },
+
+        })
+
+    })
+</script>
