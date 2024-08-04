@@ -66,7 +66,7 @@ const LeadGenerationAndEcommerce = () => {
                     button_data.map( ( button, index ) => (
 
                         <button 
-                            className={`flex flex-row md:flex-col items-center justify-center gap-1 px-10 py-4 mx-1 rounded ${ activeTab === index ? "bg-sky-500 text-white shadow-2xl shadow-blue-300" : "bg-white text-black" }`} 
+                            className={`flex flex-row md:flex-col items-center justify-center gap-1 px-10 py-4 mx-1 rounded ${ activeTab === index ? "bg-sky-500 text-white shadow-lg shadow-sky-400" : "bg-white text-black" }`} 
                             onClick={() => setActiveTab( index )}
                         >
                             { button.icon }

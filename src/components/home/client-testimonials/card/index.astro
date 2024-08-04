@@ -1,0 +1,56 @@
+---
+
+// IMPORT ASTRO COMPONENTS
+import Rating from "@/components/home/client-testimonials/card/rating/index.astro"
+
+// IMPORT ASTRO ATOMS
+import ParagraphBase from "@/atoms/atoms-shiva/paragraphs/base/index.astro"
+import ParagraphLg from "@/atoms/atoms-shiva/paragraphs/lg/index.astro"
+import ParagraphTwoXlSemibold from "@/atoms/atoms-shiva/paragraphs/2xl/semibold/index.astro"
+import PictureContain from "@/atoms/picture/internal/contain/index.astro"
+
+// GET ASTRO PROPS
+const {
+
+    description,
+    logo_source,
+    numbers,
+
+} = Astro.props
+
+---
+
+<div class="space-y-6 p-6 bg-white rounded-2xl">
+    <div class="flex gap-2 items-center justify-between">
+        <div class="size-28">
+            <PictureContain
+                alternative_text=""
+                source={ logo_source }
+            />
+        </div>
+        <Rating/>
+    </div>
+    <ParagraphLg>{ description }</ParagraphLg>
+    <div class="flex gap-4">
+        {
+
+            numbers.map( ( data ) => (
+
+                <div class="space-y-1">
+                    <div class="flex items-center">
+                        <div class="size-6">
+                            <PictureContain
+                                alternative_text=""
+                                source="/icons/up-arrow.svg"
+                            />
+                        </div>
+                        <ParagraphTwoXlSemibold>{ data.number }</ParagraphTwoXlSemibold>
+                    </div>
+                    <ParagraphBase>{ data.title }</ParagraphBase>
+                </div>
+
+            ))
+
+        }
+    </div>
+</div>
