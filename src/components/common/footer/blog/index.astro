@@ -1,0 +1,47 @@
+---
+
+//IMPORT ASTRO ATOMS
+import HeadingSixSmBoldUppercaseSlate from "@/atoms/atoms-diksha/headings/six/sm/bold/uppercase/slate/index.astro"
+import Links from "@/atoms/links/index.astro"
+import ParagraphSmSlate from "@/atoms/atoms-diksha/paragraphs/sm/slate/index.astro"
+import Picture from "@/atoms/picture/internal/contain/index.astro"
+
+//GET ASTRO PROPS
+const { footer_blogs_data } = Astro.props
+
+---
+
+<div class="flex flex-col w-64">
+    <div class="pb-4">
+        <HeadingSixSmBoldUppercaseSlate>RECENT BLOG POSTS</HeadingSixSmBoldUppercaseSlate>
+    </div>
+    {
+
+        footer_blogs_data.map( item =>{
+
+            return (
+
+                <div class="flex gap-6 items-center">
+                    <div class="size-40">
+                        <Picture
+                            alternative_text="blog-image"
+                            source={ item.data.image } 
+                        /> 
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <Links
+                            aria_label={ item.data.title }
+                            href={ item.data.link }
+                        >
+                            <ParagraphSmSlate>{ item.data.title }</ParagraphSmSlate>
+                        </Links>
+                        <ParagraphSmSlate>{ item.data.date }</ParagraphSmSlate>
+                    </div>
+                </div>
+
+            )
+            
+        })
+
+    }
+</div>

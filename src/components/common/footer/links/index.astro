@@ -1,0 +1,34 @@
+---
+
+//IMPORT ASTRO ATOMS
+import HeadingSixSmBoldUppercaseSlate from "@/atoms/atoms-diksha/headings/six/sm/bold/uppercase/slate/index.astro"
+import Links from "@/atoms/links/index.astro"
+import ParagraphSmSlate from "@/atoms/atoms-diksha/paragraphs/sm/slate/index.astro"
+
+//GET ASTRO PROPS
+const { footer_links_data } = Astro.props
+
+---
+
+<div class="flex flex-col gap-4 w-48">
+    <div class="pb-4">
+        <HeadingSixSmBoldUppercaseSlate>USEFUL LINKS</HeadingSixSmBoldUppercaseSlate>
+    </div>
+    {
+
+        footer_links_data.map( item =>{
+
+            return (
+
+                <Links
+                    aria_label={ item.data.title }
+                    href={ item.data.link }
+                >
+                    <ParagraphSmSlate>{ item.data.title }</ParagraphSmSlate>
+                </Links>
+
+            )
+        })
+
+    }
+</div>
