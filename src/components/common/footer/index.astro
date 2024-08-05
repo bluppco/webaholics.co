@@ -4,11 +4,14 @@
 import { getCollection } from "astro:content"
 
 //IMPORT FOOTER COLLECTION 
-let footer_links_data = await getCollection( "footer-links" )
-footer_links_data = footer_links_data.filter( item => item.data.live ).sort( ( a, b ) => a.data.order - b.data.order )
-
 let footer_blogs_data = await getCollection( "footer-blogs" )
 footer_blogs_data = footer_blogs_data.filter( item => item.data.live ).sort( ( a, b ) => a.data.order - b.data.order )
+
+let footer_data = await getCollection( "footer-data" )
+footer_data = footer_data.filter( item => item.data.live ).sort( ( a, b ) => a.data.order - b.data.order )
+
+let footer_links_data = await getCollection( "footer-links" )
+footer_links_data = footer_links_data.filter( item => item.data.live ).sort( ( a, b ) => a.data.order - b.data.order )
 
 // IMPORT ASTRO LAYOUTS
 import Container from "@/layouts/container/index.astro"
@@ -19,6 +22,7 @@ import LinksColumn from "@/components/common/footer/links/index.astro"
 
 //IMPORT ASTRO ATOMS
 import HeadingSixSmBoldUppercaseSlate from "@/atoms/atoms-diksha/headings/six/sm/bold/uppercase/slate/index.astro"
+import HeadingSixTwoXlMediumGray from "@/atoms/atoms-diksha/headings/six/2xl/medium/gray/index.astro"
 import Links from "@/atoms/links/index.astro"
 import ParagraphSmSlate from "@/atoms/atoms-diksha/paragraphs/sm/slate/index.astro"
 import Picture from "@/atoms/picture/internal/contain/index.astro"
@@ -27,27 +31,70 @@ import Picture from "@/atoms/picture/internal/contain/index.astro"
 ---
 <footer class="bg-light_blue py-16">
     <Container>
-        <div class="flex flex-wrap justify-evenly gap-6">
+        <div class="flex flex-wrap justify-between gap-6">
+            <div class="flex flex-col gap-2 w-52">
+                <div class="size-48 py-8">
+                    <Picture
+                        alternative_text="logo"
+                        source="/images/footer-images/webaholics-logo.png"
+                    />
+                </div>
+                <HeadingSixTwoXlMediumGray>Webaholics</HeadingSixTwoXlMediumGray>
+                {
+
+                    footer_data.map( item =>{
+
+                        return (
+
+                            <Links
+                                aria_label={ item.data.icon}
+                                href={ item.data.link }
+                            >
+                                <div class="flex gap-4">
+                                    <i class="material-symbols-rounded text-gray-500 text-2xl">{ item.data.icon }</i>
+                                    <ParagraphSmSlate>{ item.data.text }</ParagraphSmSlate>
+                                </div>
+                            </Links>
+
+                        )
+                        
+                    })
+
+                }
+            </div>
             <div class="flex flex-col gap-4 w-72">
                 <div class="pb-4">
                     <HeadingSixSmBoldUppercaseSlate>ABOUT US</HeadingSixSmBoldUppercaseSlate>
                 </div>
                 <ParagraphSmSlate>We are a diverse team of designers, developers, and marketers dedicated to improving online business for our clients and partners"</ParagraphSmSlate>
-                <div class="py-6 flex gap-2">
+                <div class="py-6 flex gap-2 items-start">
                     <div class="w-36 aspect-video">
                         <Picture
                             alternative_text="google partner"
                             source="/images/footer-images/google-partners-logo-services.png"
                         />
                     </div>
-                    <div class="flex flex-col">
-                        <!-- <div class="flex gap-2">
-                            <div class="">
+                    <div class="flex flex-col gap-2">
+                        <div class="flex gap-2">
+                            <div class="size-8">
                                 <Picture
-                                    alternative_text=""
+                                    alternative_text="clutch"
+                                    source="/images/footer-images/clutch.svg"
                                 />
                             </div>
-                        </div> -->
+                            <div class="flex flex-col gap-1">
+                                <div class="flex">
+                                    {
+                                        Array(5).fill(0).map(() => (
+
+                                                <span class="text-red-500 material-symbols-rounded">star</span>
+            
+                                        ))
+                                    }
+                                </div>
+                                <p class="font-roboto text-sm text-slate-500 uppercase tracking-wider">15 reviews</p>
+                            </div>
+                        </div>
                         <div class="size-28">
                             <Picture
                                 alternative_text="utah winner badge"
